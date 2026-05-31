@@ -25,7 +25,7 @@ function Hotel(){
         formData.append("status", status)
         formData.append("image", image)
 
-        await axios.post("http://localhost:5000/fi", formData)
+        await axios.post(`${process.env.REACT_APP_API_URL}/fi`, formData)
 
         alert("Inserted")
 
@@ -36,7 +36,7 @@ function Hotel(){
     // READ
     const getData = async() => {
 
-        const res = await axios.get("http://localhost:5000/fi")
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/fi`)
 
         setRooms(res.data)
 
@@ -51,7 +51,7 @@ function Hotel(){
     // DELETE
     const deleteData = async(id) => {
 
-        await axios.delete(`http://localhost:5000/fi/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/fi/${id}`)
 
         getData()
 
@@ -106,7 +106,7 @@ function Hotel(){
                         <div className="card" key={item._id}>
 
                             <img
-                            src={`http://localhost:5000/images/${item.image}`}
+                            src={`${process.env.REACT_APP_API_URL}/images/${item.image}`}
                             alt=""
                             width="200"
                             />
